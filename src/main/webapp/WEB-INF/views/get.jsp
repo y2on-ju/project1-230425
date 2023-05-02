@@ -13,6 +13,7 @@
 <body>
 
 	<my:navBar></my:navBar>
+
 	<my:alert></my:alert>
 
 
@@ -21,12 +22,25 @@
 		<!-- .row.justify-content-center>.col-12.col-md-8.col-lg-6 -->
 		<div class="row justify-content-center">
 			<div class="col-12 col-md-8 col-lg-6">
-				<h1>${board.id }번게시물</h1>
+				<h1>${board.id }번 게시물</h1>
 				<div>
 					<div class="mb-3">
 						<label for="" class="form-label">제목</label>
 						<input type="text" class="form-control" value="${board.title }" readonly />
 					</div>
+					
+					<!-- 그림 파일 출력 -->
+					<div class="mb-3">
+						<c:forEach items="${board.fileName }" var="fileName" >
+							<div class="mb-3">
+								<%-- http://localhost:8080/image/4122/slamdunk.jfif --%>
+								<%-- http://localhost:8080/image/게시물번호/fileName --%>
+								<img class="img-thumbnail img-fluid" src="http://localhost:8080/image/${board.id }/${fileName}" alt="" />
+							</div>
+						</c:forEach>
+					</div>
+					
+					
 					<div class="mb-3">
 						<label for="" class="form-label">본문</label>
 						<textarea class="form-control" readonly rows="10">${board.body }</textarea>
@@ -54,30 +68,27 @@
 			<input type="text" name="id" value="${board.id }" />
 		</form>
 	</div>
-	
+
 	<!-- Modal -->
-<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">삭제 확인</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        삭제 하시겠습니까?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="submit" class="btn btn-danger" form ="removeForm" >삭제</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">삭제 확인</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">삭제 하시겠습니까?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-danger" form="removeForm" >삭제</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-	
 </body>
 </html>
 
