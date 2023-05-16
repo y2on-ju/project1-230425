@@ -19,10 +19,12 @@
 	<div class="container-lg">
 		<h1>게시물 목록</h1>
 		<!-- table.table>thead>tr>th*4^^tbody -->
+		<!-- 새로작성된 코드 변경된 코드!!!  -->
 		<table class="table">
 			<thead>
 				<tr>
 					<th>#</th>
+					<th><i class="fa-solid fa-heart"></i></th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일시</th>
@@ -32,6 +34,7 @@
 				<c:forEach items="${boardList }" var="board">
 					<tr>
 						<td>${board.id }</td>
+						<td>${board.likeCount }</td>
 						<td>
 							<a href="/id/${board.id }"> ${board.title } </a>
 							
