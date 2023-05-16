@@ -14,7 +14,10 @@ public class Board {
 	private String writer;
 	private List<String> fileName;
 	
+	private Boolean liked;
+	
 	private Integer fileCount;
+	private Integer likeCount;
 }
 
 
